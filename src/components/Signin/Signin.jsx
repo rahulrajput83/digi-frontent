@@ -1,13 +1,15 @@
+/* Imports */
 import React from 'react'
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Input from './Input'
 import {useDispatch} from 'react-redux'
 
-
+/* Signin Functional Component */
 function Signin() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  /* useStates */
   const [errorMessage, setErrorMessage] = useState('');
   const [error, setError] = useState(false);
   const [clicked, setClicked] = useState(false);
@@ -16,6 +18,7 @@ function Signin() {
     password: ''
   })
 
+  /* Arrow function triggers when form submitted. */
   const handleSubmit = (e) => {
     e.preventDefault();
     if (data.email && data.password) {
@@ -62,6 +65,7 @@ function Signin() {
     }
   }
 
+  /* Arrow function to dispatch data to redux. */
   const saveData = (res) => {
     let action = {
       type: "ADD_DATA",
@@ -82,6 +86,7 @@ function Signin() {
       <div className='shadow-lg w-full md:w-96 justify-center p-2 md:p-4 flex flex-col'>
         <span className='text-center font-medium text-xl'>Signin</span>
         <form className='w-full' onSubmit={handleSubmit}>
+          {/* Render Input component from './Input' with props. */}
           <Input name='email' data={data} setData={setData} type='text' placeholder='Enter Email' />
           <Input name='password' data={data} setData={setData} type='password' placeholder='Enter Password' />
           <button disabled={clicked} type='submit' className='mt-4 hover:bg-blue-500 w-full p-2 bg-blue-600 text-white rounded flex justify-center items-center'>

@@ -1,0 +1,18 @@
+#BarChart { 
+    display: flex; 
+    flex-direction: row; 
+    align-items: flex-end;
+    flex-wrap: wrap;
+    justify-content: center; 
+    margin: 1rem;
+  }
+  
+  .bar {
+    background-color: rgb(37, 99, 235); 
+    width: 1rem !important;
+    margin: 0.4rem;
+  }
+
+  #LineChart {
+    overflow: visible /* Just in case the axis render outside of our div, let's make sure it still displays */
+  }

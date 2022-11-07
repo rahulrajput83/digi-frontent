@@ -1,5 +1,6 @@
 import React from 'react'
 
+/* Input Functional Component */
 function Input(props) {
     const handleChange = (e) => {
         props.setData({...props.data, [e.target.name] : e.target.value})

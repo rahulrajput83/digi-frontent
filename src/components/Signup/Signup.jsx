@@ -1,10 +1,14 @@
+/* Imports */
 import React from 'react'
 import { useState } from 'react';
 import Input from './Input'
 
+/* Roles for Signup */
 const roleData = ["Admin", "User"]
 
+/* Signup Functional Component */
 function Signup() {
+  /* useStates */
   const [errorMessage, setErrorMessage] = useState('')
   const [showRole, setShowRole] = useState(false);
   const [clicked, setClicked] = useState(false);
@@ -16,6 +20,7 @@ function Signup() {
     role: ''
   })
 
+  /* Arrow function triggers when form submitted. */
   const handleSubmit = (e) => {
     e.preventDefault();
     if (data.name && data.email && data.password && data.role) {
@@ -57,6 +62,7 @@ function Signup() {
       <div className='shadow-lg w-full md:w-96 justify-center p-2 md:p-4 flex flex-col'>
         <span className='text-center font-medium text-xl'>Signup</span>
         <form className='w-full' onSubmit={handleSubmit}>
+          {/* Render Input component from './Input' with props. */}
           <Input name='name' data={data} setData={setData} type='text' placeholder='Enter Name' />
           <Input name='email' data={data} setData={setData} type='text' placeholder='Enter Email' />
           <Input name='password' data={data} setData={setData} type='password' placeholder='Enter Password' />
@@ -68,6 +74,7 @@ function Signup() {
               })}
             </div> : null}
           </div>
+          {/* Button to submite form data. */}
           <button disabled={clicked} type='submit' className='mt-4 hover:bg-blue-500 w-full p-2 bg-blue-600 text-white rounded flex justify-center items-center'>
             {clicked ? 'Please Wait...' : 'Submit'}
           </button>
