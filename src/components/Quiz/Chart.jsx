@@ -31,13 +31,13 @@ function Chart(props) {
         
          // Generate random data for our line where x is [0,15) and y is between 0 and 100
          let lineData = []
-         for(let i = 0; i < 15; i++) {
-            lineData.push({x: i + 1, y: Math.round(Math.random() * 100)})
+         for(let i = 0; i < props.chartArr.length; i++) {
+            lineData.push({x: i + 1, y: props.chartArr[i].count})
          }
     
          // Create our scales to map our data values(domain) to coordinate values(range)
-         let xScale = d3.scaleLinear().domain([0,15]).range([0, 300])
-         let yScale = d3.scaleLinear().domain([0,100]).range([300, 0]) // Since the SVG y starts at the top, we are inverting the 0 and 300.
+         let xScale = d3.scaleLinear().domain([0, (props.chartArr.length - 1) * 1.5]).range([0, 300])
+         let yScale = d3.scaleLinear().domain([0, 100]).range([300, 0]) // Since the SVG y starts at the top, we are inverting the 0 and 300.
          
          // Generate a path with D3 based on the scaled data values
          let line = d3.line()
@@ -70,6 +70,7 @@ function Chart(props) {
     <div>
       <div id="pgraphs"></div>
       <div id="BarChart"></div>
+      <svg id="LineChart" width = {350} height = {350}><path/></svg>
     </div>
   );
 }
